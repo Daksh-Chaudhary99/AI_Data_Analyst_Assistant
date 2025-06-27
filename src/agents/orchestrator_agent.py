@@ -1,7 +1,7 @@
 import sys
 import logging
 from llama_index.core.agent import ReActAgent
-from agents.models import get_base_agent_model
+from .agents.models import get_base_agent_model
 
 #Logging
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
