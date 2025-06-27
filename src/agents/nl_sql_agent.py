@@ -12,7 +12,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
 class NLSQLAgent:
-    def __init__(self, model_name: str, api_key: str, base_url: str):
+    def __init__(self):
         """
         Initializes the NL-to-SQL Agent, which translates natural language to SQL, executes it, and provides answers.
 
@@ -98,11 +98,7 @@ if __name__ == "__main__":
     elif YOUR_FINETUNED_MODEL_ID == "your-finetuned-model-id":
         print("Error: Please replace 'your-finetuned-model-id' with your actual model ID.")
     else:
-        nl_sql_agent = NLSQLAgent(
-            model_name=YOUR_FINETUNED_MODEL_ID,
-            api_key=NEBIUS_API_KEY,
-            base_url=NEBIUS_BASE_URL
-        )
+        nl_sql_agent = NLSQLAgent()
 
         print("\nNL-to-SQL Agent initialized. Ask a question about your sales database.")
 

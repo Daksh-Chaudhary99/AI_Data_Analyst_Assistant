@@ -1,5 +1,3 @@
-# src/agents/tools/schema_retriever_tool.py
-
 import os
 import logging
 import chromadb
