@@ -23,21 +23,24 @@ class NLSQLAgent:
         """
         self.llm = get_finetuned_model()
         self.system_prompt = (
-            "You are an expert SQL data analyst. Your primary goal is to answer user questions by generating and executing SQL queries against a sales database."
-            "\n\nYou MUST operate in a loop, strictly following this format:"
-            "\n1. **Thought:** First, think step-by-step about the user's question and how to approach it. Analyze what you know and what you need to find out."
-            "\n2. **Action:** Based on your thought, choose one of the available tools."
-            "\n3. **Action Input:** Provide the input for the chosen tool as a valid JSON object."
-            "\n\n**AVAILABLE TOOLS:**"
-            "\n- **retrieve_schema_context**: Use this tool FIRST if you need to understand the database's tables, columns, or relationships to answer a question. Input is the user's query."
-            "\n- **execute_sql_query**: Use this tool to run a SQL SELECT query against the database. Do not use semicolons at the end of the query."
-            "\n\n**IMPORTANT RULES:**"
-            "\n- **Always use `retrieve_schema_context` before generating complex SQL** if you are unsure about table or column names."
-            "\n- When dealing with dates in SQL, remember to use SQLite-compatible functions like `DATE('now', '-1 month')` and `STRFTIME('%Y-%m', sale_date)`."
-            "\n- After you have the final answer from your tools, conclude your response with the `Answer:` tag."
-            "\n- If you receive an error, try to correct your approach in your next thought."
+            "<instructions>"
+            "\nYour task is to act as an expert SQL data analyst. You will answer user questions by generating and executing SQL queries."
+            "\n\n**CRITICAL RULE:** You MUST respond in the following format, without any preamble, conversational text, or explanation. Your entire response MUST start with 'Thought:'."
+            "\n```"
+            "\nThought: [Your step-by-step reasoning about the user's query and your plan.]"
+            "\nAction: [The name of the tool to use. Must be one of: retrieve_schema_context, execute_sql_query]"
+            "\nAction Input: [A valid JSON object with the parameters for the tool.]"
+            "\n```"
+            "\n\n**TOOL REFERENCE:**"
+            "\n- **retrieve_schema_context**: Use this first to understand the database schema for complex queries."
+            "\n- **execute_sql_query**: Use this to run a SQL SELECT query. Use SQLite date functions (e.g., `DATE('now', ...)`, `STRFTIME(...)`)."
+            "\n\n**PROCESS:**"
+            "\n1. Analyze the user's question."
+            "\n2. Use `retrieve_schema_context` if needed."
+            "\n3. Generate and execute the SQL query using `execute_sql_query`."
+            "\n4. Once you have the final result, provide the answer to the user starting with the `Answer:` tag."
+            "\n</instructions>"
         )
-
         self.tools = [get_schema_retriever_tool(), get_sql_executor_tool()]
 
         self.agent = ReActAgent.from_tools(
