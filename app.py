@@ -86,7 +86,8 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         clear_btn = gr.ClearButton(value="Clear")
         submit_btn = gr.Button("Submit", variant="primary")
 
-    output_markdown = gr.Markdown(label="Answer")
+    with gr.Box(label="Answer"):
+        output_markdown = gr.Markdown()
 
     gr.Examples(
         examples=example_list,
@@ -98,7 +99,8 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     submit_btn.click(
         fn=query_agent_gradio,
         inputs=user_query,
-        outputs=output_markdown
+        outputs=output_markdown,
+        show_progress="minimal"
     )
 
     # Define what happens when you click the clear button
