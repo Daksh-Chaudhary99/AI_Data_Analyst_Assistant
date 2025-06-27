@@ -21,6 +21,9 @@ chroma_db_kpi/
 # Jupyter Notebook Checkpoints 
 .ipynb_checkpoints/
 
+# Model checkpoints
+fine-tuning/model_checkpoints/
+
 # Operating System files
 .DS_Store
 Thumbs.db
