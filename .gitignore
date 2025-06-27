@@ -1,1 +1,26 @@
+# Python virtual environment
+venv/
+__pycache__/
+
+# Environment variables
 .env
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# ChromaDB files 
+chroma_db_schema/
+chroma_db_kpi/
+
+
+# LlamaIndex caches/generated files 
+.llama_cache/
+
+# Jupyter Notebook Checkpoints 
+.ipynb_checkpoints/
+
+# Operating System files
+.DS_Store
+Thumbs.db
