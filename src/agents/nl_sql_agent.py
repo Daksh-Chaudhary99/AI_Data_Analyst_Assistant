@@ -3,9 +3,9 @@ import logging
 import sys
 from llama_index.llms.openai import OpenAI 
 from llama_index.core.agent import ReActAgent
-from agent_tools.sql_executor_tool import get_sql_executor_tool
-from agent_tools.schema_retriever_tool import get_schema_retriever_tool
-from agent_models.models import get_finetuned_model
+from .agent_tools.sql_executor_tool import get_sql_executor_tool
+from .agent_tools.schema_retriever_tool import get_schema_retriever_tool
+from .agent_models.models import get_finetuned_model
 
 # Configure logging for better visibility into agent's thought process
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
