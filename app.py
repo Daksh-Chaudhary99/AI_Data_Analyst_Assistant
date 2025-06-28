@@ -40,16 +40,32 @@ nl_sql_agent_instance = NLSQLAgent()
 print("NLSQLAgent initialized.")
 
 # --- Define Gradio Interface Functions ---
-async def query_agent_gradio(user_query: str) -> str:
+# async def query_agent_gradio(user_query: str) -> str:
+#     if not user_query.strip():
+#         return "Please enter a question to get started!"
+
+#     try:
+#         response = await nl_sql_agent_instance.process_query(user_query)
+#         return response
+#     except Exception as e:
+#         logging.error(f"Error processing query in Gradio app: {e}", exc_info=True) 
+#         return f"An internal error occurred: {type(e).__name__}: {str(e)}. Please check the Space logs for more details."
+    
+def query_agent_gradio(user_query: str):
     if not user_query.strip():
-        return "Please enter a question to get started!"
+        yield "Please enter a question to get started!"
+        return
 
     try:
-        response = await nl_sql_agent_instance.process_query(user_query)
-        return response
+        yield "Thinking... contacting NL-to-SQL agent 🤖"
+        
+        # Run async code inside sync function
+        response = asyncio.run(nl_sql_agent_instance.process_query(user_query))
+
+        yield response
     except Exception as e:
-        logging.error(f"Error processing query in Gradio app: {e}", exc_info=True) 
-        return f"An internal error occurred: {type(e).__name__}: {str(e)}. Please check the Space logs for more details."
+        logging.error(f"Error processing query in Gradio app: {e}", exc_info=True)
+        yield f"An internal error occurred: {type(e).__name__}: {str(e)}. Please check the Space logs for more details."
 
 # --- Create Gradio Interface ---
 # --- Define the list of examples ---
