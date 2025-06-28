@@ -114,7 +114,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         show_progress="minimal"
     )
 
-    clear_btn.add(components=[user_query, output_markdown])
+    clear_btn.add(components=[user_query, output_box])
 
 
 if __name__ == "__main__":
