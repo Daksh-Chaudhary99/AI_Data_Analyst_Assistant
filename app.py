@@ -90,10 +90,16 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     with gr.Row():
         clear_btn = gr.ClearButton(value="Clear")
         submit_btn = gr.Button("Submit", variant="primary")
-
-    with gr.Group():  
-        gr.Markdown("### Answer")  
-        output_markdown = gr.Markdown()
+    
+    with gr.Group():
+        gr.Markdown("### Answer")
+        output_box = gr.Textbox(
+            label="",
+            lines=6,
+            interactive=False,
+            show_copy_button=True,
+            container=True
+        )
 
     gr.Examples(
         examples=example_list,
