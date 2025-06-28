@@ -110,7 +110,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     submit_btn.click(
         fn=query_agent_gradio,
         inputs=user_query,
-        outputs=output_markdown,
+        outputs=output_box,
         show_progress="minimal"
     )
 
