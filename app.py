@@ -100,7 +100,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
         fn=query_agent_gradio,
         inputs=user_query,
         outputs=output_markdown,
-        show_progress="minimal"
+        show_progress="full"
     )
 
     clear_btn.add(components=[user_query, output_markdown])
