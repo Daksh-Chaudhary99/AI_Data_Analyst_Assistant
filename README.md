@@ -21,6 +21,8 @@ The **AI-Powered Data Analyst Assistant** is a cutting-edge conversational AI ap
 
 This project showcases a sophisticated multi-agent architecture leveraging **Large Language Models (LLMs)**, **Retrieval Augmented Generation (RAG)**, and **fine-tuning** to deliver accurate, context-aware, and actionable insights, bridging the gap between raw data and business understanding.
 
+Link to Project Demo: https://huggingface.co/spaces/DakshC/Data_Analyst_Assistant
+Link to Project Demo Video: https://www.dropbox.com/scl/fi/7lo9j75h36ic5xipqt7gq/AI_Data_Analyst_Assistant_Demo.mp4?rlkey=2suvkn076goi52nsrokz407eq&st=zmtyyg3u&dl=0 
 
 ## 🗄️ Database Schema & Data Scale
 
