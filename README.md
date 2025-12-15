@@ -9,7 +9,7 @@ app_file: app.py
 pinned: false
 ---
 
-# 📊 AI-Powered Data Analyst Assistant
+# AI-Powered Data Analyst Assistant
 
 ### Empowering Business Users with Self-Service Analytics via Conversational AI
 
